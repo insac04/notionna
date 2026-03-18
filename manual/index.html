@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>알림온나 앱 사용설명서</title>
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("manualTheme");
+        if (savedTheme === "dark" || savedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          return;
+        }
+      } catch (error) {}
+      document.documentElement.setAttribute("data-theme", "light");
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg-0: #f4f7f2;
+      --bg-1: #ffffff;
+      --ink-0: #1f2a1f;
+      --ink-1: #3e4a3c;
+      --line: #dbe4d7;
+      --brand: #3f7a4a;
+      --brand-2: #27643a;
+      --accent: #d07a2d;
+      --soft: #edf4ea;
+      --warn-bg: #fff5eb;
+      --warn-line: #f1be87;
+      --ok-bg: #eaf6ed;
+      --ok-line: #97c8a4;
+      --shadow: 0 14px 36px rgba(32, 44, 33, 0.08);
+      --radius: 18px;
+      --bg-grad-1: #dcebd9;
+      --bg-grad-2: #f3e8db;
+      --hero-grad-1: #f9fdf9;
+      --hero-grad-2: #f3f8f1;
+      --hero-grad-3: #fbf7f2;
+      --hero-glow: rgba(63, 122, 74, 0.22);
+      --eyebrow-bg: #ebf5ea;
+      --eyebrow-line: #c7dfca;
+      --toc-link: #2e3d2f;
+      --toc-hover-line: #d3e4d2;
+      --chip-line: #d0ded0;
+      --chip-bg: #f5faf4;
+      --chip-ink: #2e5e37;
+      --table-bg: #ffffff;
+      --th-bg: #f2f7f0;
+      --th-ink: #274f2e;
+      --code-bg: #f4f7f4;
+      --code-line: #e0e8e0;
+      --footer-ink: #657068;
+      --control-bg: #ffffff;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg-0: #111318;
+      --bg-1: #1b1f27;
+      --ink-0: #e8ebf1;
+      --ink-1: #b7becc;
+      --line: #2f3644;
+      --brand: #7c8fb8;
+      --brand-2: #9fb0d8;
+      --accent: #e0a56a;
+      --soft: #222836;
+      --warn-bg: #2b221a;
+      --warn-line: #8f6b4b;
+      --ok-bg: #1f252f;
+      --ok-line: #4f647f;
+      --shadow: 0 14px 36px rgba(0, 0, 0, 0.34);
+      --bg-grad-1: #1a1f2c;
+      --bg-grad-2: #2b2330;
+      --hero-grad-1: #1b202c;
+      --hero-grad-2: #1d2028;
+      --hero-grad-3: #28222a;
+      --hero-glow: rgba(132, 147, 182, 0.2);
+      --eyebrow-bg: #252c39;
+      --eyebrow-line: #38445b;
+      --toc-link: #d4d9e6;
+      --toc-hover-line: #46506a;
+      --chip-line: #3a475f;
+      --chip-bg: #232b39;
+      --chip-ink: #b8c4df;
+      --table-bg: #171b25;
+      --th-bg: #222838;
+      --th-ink: #d0d9ee;
+      --code-bg: #1f2635;
+      --code-line: #32405a;
+      --footer-ink: #9aa4bb;
+      --control-bg: #171b25;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink-0);
+      font-family: "Pretendard Variable", "SUIT Variable", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      line-height: 1.65;
+      background:
+        radial-gradient(1200px 560px at 8% -10%, var(--bg-grad-1) 0%, transparent 55%),
+        radial-gradient(900px 500px at 95% 0%, var(--bg-grad-2) 0%, transparent 45%),
+        var(--bg-0);
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 28px 20px 42px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(140deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 48%, var(--hero-grad-3) 100%);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      padding: 30px 30px 24px;
+      margin-bottom: 18px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -120px;
+      top: -130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--hero-glow) 0%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--brand-2);
+      background: var(--eyebrow-bg);
+      border: 1px solid var(--eyebrow-line);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    .theme-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: var(--bg-1);
+    }
+
+    .theme-label {
+      font-size: 12px;
+      color: var(--ink-1);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      opacity: 0.76;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .theme-label.active {
+      color: var(--ink-0);
+      opacity: 1;
+    }
+
+    .theme-toggle-control {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle-control input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .theme-toggle-slider {
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--soft);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .theme-toggle-slider::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--bg-1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease;
+    }
+
+    .theme-toggle-control input:checked + .theme-toggle-slider {
+      background: var(--brand);
+      border-color: var(--brand);
+    }
+
+    .theme-toggle-control input:checked + .theme-toggle-slider::after {
+      transform: translateX(20px);
+    }
+
+    .theme-toggle-control input:focus-visible + .theme-toggle-slider {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    h1 {
+      margin: 14px 0 6px;
+      line-height: 1.28;
+      font-size: clamp(27px, 3.7vw, 38px);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--ink-1);
+      font-size: clamp(14px, 2.1vw, 17px);
+    }
+
+    .meta {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+    }
+
+    .meta-card {
+      background: var(--bg-1);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .meta-card dt {
+      margin: 0 0 4px;
+      color: var(--ink-1);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .meta-card dd {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 14px;
+      background: var(--bg-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      max-height: calc(100vh - 32px);
+      overflow: auto;
+    }
+
+    .toc h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 6px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: var(--toc-link);
+      font-size: 14px;
+    }
+
+    .toc a:hover {
+      background: var(--soft);
+      border-color: var(--toc-hover-line);
+    }
+
+    main {
+      display: grid;
+      gap: 14px;
+    }
+
+    section {
+      background: var(--bg-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    section h2 {
+      margin: 0 0 12px;
+      font-size: clamp(20px, 2.7vw, 25px);
+      letter-spacing: -0.01em;
+    }
+
+    section h3 {
+      margin: 18px 0 6px;
+      font-size: 17px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul, ol {
+      margin: 0 0 12px 20px;
+      padding: 0;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .note {
+      border: 1px solid var(--warn-line);
+      background: var(--warn-bg);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 8px;
+    }
+
+    .tip {
+      border: 1px solid var(--ok-line);
+      background: var(--ok-bg);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 8px;
+    }
+
+    .manual-shot {
+      margin: 14px 0 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--bg-1);
+      text-align: center;
+    }
+
+    .manual-shot img {
+      display: block;
+      width: min(100%, 360px);
+      margin: 0 auto;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .manual-shot figcaption {
+      margin-top: 10px;
+      color: var(--ink-1);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid var(--chip-line);
+      background: var(--chip-bg);
+      color: var(--chip-ink);
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--table-bg);
+      margin-bottom: 10px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      width: 24%;
+      background: var(--th-bg);
+      font-weight: 700;
+      color: var(--th-ink);
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    code {
+      font-family: "JetBrains Mono", "Consolas", "Courier New", monospace;
+      font-size: 0.92em;
+      background: var(--code-bg);
+      border: 1px solid var(--code-line);
+      border-radius: 6px;
+      padding: 1px 6px;
+    }
+
+    .footer {
+      margin-top: 12px;
+      text-align: center;
+      color: var(--footer-ink);
+      font-size: 13px;
+      padding: 10px 0 2px;
+    }
+
+    .mobile-jump {
+      display: none;
+      margin-bottom: 12px;
+    }
+
+    .mobile-jump select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font: inherit;
+      background: var(--control-bg);
+      color: var(--ink-0);
+    }
+
+    @media (max-width: 1020px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .mobile-jump {
+        display: block;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 16px 12px 28px;
+      }
+
+      .hero {
+        padding: 20px 16px;
+        border-radius: 16px;
+      }
+
+      .theme-switch {
+        width: 100%;
+        justify-content: space-between;
+        border-radius: 12px;
+      }
+
+      section {
+        padding: 16px;
+        border-radius: 14px;
+      }
+
+      th, td {
+        display: block;
+        width: 100%;
+      }
+
+      th {
+        border-bottom: 0;
+        padding-bottom: 3px;
+      }
+
+      td {
+        padding-top: 3px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-head">
+        <div class="eyebrow">User Manual</div>
+        <div class="theme-switch" role="group" aria-label="설명서 테마 선택">
+          <span id="theme-light-label" class="theme-label">라이트</span>
+          <label class="theme-toggle-control" for="theme-toggle">
+            <input type="checkbox" id="theme-toggle" aria-label="다크 테마 전환">
+            <span class="theme-toggle-slider" aria-hidden="true"></span>
+          </label>
+          <span id="theme-dark-label" class="theme-label">다크</span>
+        </div>
+      </div>
+      <h1>알림온나 앱 사용설명서</h1>
+
+      <div class="meta">
+        <dl class="meta-card">
+          <dt>앱 이름</dt>
+          <dd>알림온나 (NotiOnna)</dd>
+        </dl>
+        <dl class="meta-card">
+          <dt>안내 범위</dt>
+          <dd>주요 기능 사용법 및 설정 가이드</dd>
+        </dl>
+        <dl class="meta-card">
+          <dt>문서 갱신일</dt>
+          <dd>2026-03-01</dd>
+        </dl>
+      </div>
+    </header>
+
+    <div class="mobile-jump">
+      <label for="jump" style="font-size: 13px; color: var(--ink-1);">섹션 이동</label>
+      <select id="jump" onchange="if(this.value){location.hash=this.value;}">
+        <option value="">선택하세요</option>
+        <option value="overview">1. 앱 개요</option>
+        <option value="quickstart">2. 빠른 시작</option>
+        <option value="main">3. 메인 화면</option>
+        <option value="item">4. 품목 등록/편집</option>
+        <option value="calendar">5. 달력</option>
+        <option value="shopping">6. 쇼핑 리스트</option>
+        <option value="history">7. 구매 내역</option>
+        <option value="smart">8. 스마트 등록(Beta)</option>
+        <option value="settings">9. 설정 가이드</option>
+        <option value="backup">10. 백업/복원</option>
+        <option value="excel">11. 엑셀 가져오기/내보내기</option>
+        <option value="security">12. 데이터/보안</option>
+        <option value="faq">13. 문제 해결</option>
+      </select>
+    </div>
+
+    <div class="layout">
+      <aside class="toc">
+        <h2>목차</h2>
+        <ul>
+          <li><a href="#overview">1. 앱 개요</a></li>
+          <li><a href="#quickstart">2. 빠른 시작</a></li>
+          <li><a href="#main">3. 메인 화면</a></li>
+          <li><a href="#item">4. 품목 등록/편집</a></li>
+          <li><a href="#calendar">5. 달력</a></li>
+          <li><a href="#shopping">6. 쇼핑 리스트</a></li>
+          <li><a href="#history">7. 구매 내역</a></li>
+          <li><a href="#smart">8. 스마트 등록(Beta)</a></li>
+          <li><a href="#settings">9. 설정 가이드</a></li>
+          <li><a href="#backup">10. Google Drive 백업/복원</a></li>
+          <li><a href="#excel">11. 엑셀 가져오기/내보내기</a></li>
+          <li><a href="#security">12. 데이터/보안</a></li>
+          <li><a href="#faq">13. 문제 해결</a></li>
+        </ul>
+      </aside>
+
+      <main>
+        <section id="overview">
+          <h2>1. 앱 개요</h2>
+
+          <h3>1.1 앱 소개</h3>
+          <p>알림온나는 식품/생활용품/소모품 등의 <strong>구매일과 만료일</strong>을 관리하고, 알림·쇼핑·구매내역·달력·AI 스마트 등록을 한 앱에서 처리하는 생활 관리 도구입니다.</p>
+          <p>이 앱은 별도의 외부 운영 서버 없이 <strong>사용자 기기 안의 로컬 데이터</strong>를 기반으로 동작합니다. <strong>개인 정보가 외부로 유출되지 않는다</strong>는 장점이 있지만, 반대로 다른 사람과 같은 데이터를 실시간으로 함께 공유하는 용도로는 적합하지 않습니다.</p>
+
+          <h3>1.2 지원 환경</h3>
+          <p>현재는 <strong>안드로이드 앱</strong>으로 출시되어 있으며, <strong>iOS 버전은 준비 중</strong>입니다. 테블릿은 정식 지원 대상은 아니지만, 테블릿에서도 실행할 수 있도록 최소한의 화면 대응은 적용되어 있어 기본적인 사용은 가능합니다.</p>
+
+          <h3>1.3 주요 기능</h3>
+          <div class="chips">
+            <span class="chip">만료일 알림</span>
+            <span class="chip">카테고리/태그 관리</span>
+            <span class="chip">쇼핑 리스트</span>
+            <span class="chip">구매 내역</span>
+            <span class="chip">달력 보기</span>
+            <span class="chip">AI 영수증 분석</span>
+          </div>
+
+          <h3>1.4 화면 이동</h3>
+          <p>메인 네비게이션에서 <strong>전체/알림 대상/기한 만료/소비 완료</strong> 필터를 빠르게 오갈 수 있으며, 카테고리·태그 기반으로 세부 분류가 가능합니다.</p>
+
+          <h3>1.5 구매일과 만료일</h3>
+          <p><strong>구매일</strong>과 <strong>만료일</strong>은 앱 설계의 핵심 기준이지만, 실제 사용 목적에 맞게 다르게 해석해 사용할 수 있습니다. 예를 들어 구매일은 <strong>등록일</strong>처럼 사용할 수 있고, 만료일은 <strong>소비기한</strong>처럼 사용할 수 있습니다. 이 용어(라벨)는 설정에서 사용자가 원하는 표현으로 직접 바꿀 수 있습니다.</p>
+        </section>
+
+        <section id="quickstart">
+          <h2>2. 빠른 시작</h2>
+          <ol>
+            <li>메인 화면 우측 상단 <strong>+</strong>로 첫 품목을 등록합니다.</li>
+            <li><strong>설정 &gt; 알림</strong>에서 알림 서비스 ON, 시간, 기본 알림일(예: 3일 전)을 지정합니다. (기본 알림일은 신규 항목의 기본값이며, 실제 알림일은 항목별로 개별 변경 가능)</li>
+            <li>필요하면 <strong>설정 &gt; 확장 기능 &gt; AI API 키 등록</strong>에서 키를 저장하고 연결 테스트를 수행합니다.</li>
+            <li><strong>설정 &gt; 데이터 관리</strong>에서 Google Drive 백업을 1회 만들어 둡니다.</li>
+          </ol>
+          <div class="tip">
+            첫 운영 루틴 권장: <strong>등록 → 알림 확인 → 소비/정리 → 쇼핑 리스트 반영</strong>
+          </div>
+        </section>
+
+        <section id="main">
+          <h2>3. 메인 화면 사용법</h2>
+          <h3>3.1 네비게이션</h3>
+          <ul>
+            <li>기본 필터: 전체 보기, 알림 대상, 기한 만료, 소비 완료</li>
+            <li>카테고리와 활성 태그를 좌측 네비게이션에서 바로 선택</li>
+            <li>AI 키가 1개 이상 등록되어 있으면 <strong>스마트 등록(Beta)</strong> 메뉴 노출</li>
+            <li>하위 화면 바로 이동: 쇼핑 리스트, 구매 내역, 달력, 설정</li>
+          </ul>
+
+          <h3>3.2 목록 조작</h3>
+          <ul>
+            <li>검색: 품목명 + 메모(노트) 대상 검색</li>
+            <li>정렬: 입력순, 이름순, 구매일순, 만료일순 + 오름/내림차순</li>
+            <li>다중 선택 모드: 선택 품목 일괄 <strong>쇼핑 리스트 추가 / 카테고리 이동 / 삭제</strong></li>
+          </ul>
+
+          <h3>3.3 가독성 제스처</h3>
+          <ul>
+            <li>목록 영역에서 핀치로 글자 배율 조절(약 90~130%)</li>
+            <li>테블릿/넓은 화면은 분할 내비게이션, 모바일은 오버레이 내비게이션 사용</li>
+          </ul>
+        </section>
+
+        <section id="item">
+          <h2>4. 품목 등록/편집</h2>
+          <h3>4.1 등록 항목</h3>
+          <ul>
+            <li>기본: 품목명, 카테고리, 구매일, 만료일</li>
+            <li>추가: 수량/단위, 가격, 태그, 메모, 이미지, 알림 사용 여부/알림일(항목별 개별 설정 가능)</li>
+            <li><strong>기한 없음:</strong> 만료일의 연도가 <strong>9999년</strong>으로 저장된 항목은 앱 내부에서 <strong>기한 없음</strong>으로 처리합니다.</li>
+          </ul>
+
+          <h3>4.2 편집 화면 기능</h3>
+          <ul>
+            <li>저장, 초기화(신규/복제 모드), 복제 등록, 쇼핑 리스트 보내기, 삭제</li>
+            <li>연속 편집 모드가 켜져 있으면 여러 품목을 같은 화면에서 페이지 이동하며 편집할 수 있으며, 입력란 하단의 여백 부분을 좌우로 스와이프해 이전/다음 항목으로 이동할 수 있습니다.</li>
+            <li>빠른 입력(Quick Input) 다이얼로그로 텍스트 한 줄에서 이름/수량/가격/날짜/메모를 추출 (가격은 숫자만 입력 가능)</li>
+          </ul>
+
+          <div class="note">
+            빠른 입력 예시: <code>우유 2개 4500 3.3 3.10 냉장칸</code><br>
+            날짜는 <strong>3.3</strong> 같은 짧은 형식도 입력 가능합니다. (예: <code>3.3</code>, <code>03.03</code>, <code>2026.3.3</code>)
+          </div>
+
+          <h3>4.3 수량/단위 입력 상세</h3>
+          <ul>
+            <li><strong>개념(재고 관리):</strong> 수량은 보유량 숫자, 단위는 기준 단위(예: 개/봉/팩/병)입니다.</li>
+            <li><strong>입력법:</strong> <code>2개</code>, <code>1.5L</code>, <code>12</code>처럼 입력할 수 있습니다. 숫자와 단위는 붙여 써도 되고 띄어 써도 인식됩니다.</li>
+            <li><strong>단위 변경:</strong> 기존 값이 <code>2개</code>일 때 <code>2병</code>처럼 숫자+새 단위를 직접 입력하면 단위가 바뀝니다.</li>
+            <li><strong>자동 단위 유지:</strong> 단위를 한 번 입력한 뒤 숫자만 수정하면 마지막 단위를 자동 유지해 재입력을 줄여줍니다.</li>
+            <li><strong><code>-</code>/<code>+</code> 버튼:</strong> 수량 형식이 인식될 때만 활성화됩니다. <code>-</code>는 최소 0까지 감소, <code>+</code>는 증가하며, 정수는 1단위/소수는 0.1단위로 증감합니다.</li>
+          </ul>
+          <div class="tip">
+            예: <code>3팩</code>에서 숫자만 <code>5</code>로 바꾸면 <code>5팩</code>처럼 단위가 유지됩니다.
+          </div>
+
+          <h3>4.4 태그 입력 상세</h3>
+          <ul>
+            <li><strong>제안 팝업:</strong> 태그 입력 중 기존 태그와 일치/포함되는 항목이 있으면 제안 목록이 표시되며, 탭해서 바로 추가할 수 있습니다.</li>
+            <li><strong>신규 태그 추가:</strong> 원하는 텍스트를 입력한 뒤 <strong>스페이스(공백)</strong>를 누르면 새 태그가 즉시 추가됩니다. (예: <code>냉장</code> 입력 후 공백)</li>
+            <li><strong>중복 방지:</strong> 이미 추가된 동일 태그는 중복으로 다시 추가되지 않습니다.</li>
+            <li><strong>삭제:</strong> 추가된 태그 칩의 <code>x</code> 버튼으로 개별 삭제할 수 있습니다.</li>
+            <li><strong>일괄 선택:</strong> 입력칸 오른쪽 <code>...</code> 버튼으로 태그 선택 창을 열어 여러 태그를 한 번에 선택/해제할 수 있습니다.</li>
+          </ul>
+        </section>
+
+        <section id="calendar">
+          <h2>5. 달력 화면</h2>
+          <ul>
+            <li>보기 모드 전환: <strong>만료일 기준</strong> / <strong>구매일 기준</strong></li>
+            <li>월 단위 탐색 + 오늘로 즉시 이동</li>
+            <li>날짜별 품목 수, 상태 색상(임박/만료 등) 표시</li>
+            <li>특정 날짜 선택 시 하단 리스트 또는 상세 화면에서 품목 확인/편집 이동</li>
+          </ul>
+          <p>달력 시작 요일, 폰트 범위, 달력 높이 비율/아이템 스케일은 설정에서 조정할 수 있습니다.</p>
+          <div class="note">
+            <strong>참고:</strong> 권장 폰트 크기 범위는 폰 기준 <strong>날짜 10~14</strong>, <strong>항목 8~10</strong>, 테블릿 기준 <strong>날짜 12~16</strong>, <strong>항목 10~14</strong>입니다.<br>
+            달력 화면에서 항목 폰트 크기는 추가적으로 조절이 가능합니다.
+          </div>
+        </section>
+
+        <section id="shopping">
+          <h2>6. 쇼핑 리스트</h2>
+          <h3>6.1 핵심 기능</h3>
+          <ul>
+            <li>그룹 단위 리스트 운영(추가/이름 변경/정렬/삭제)</li>
+            <li>개별/전체 선택 체크, 구매 여부 토글</li>
+            <li>선택 항목 일괄 작업: 삭제, 그룹 이동, 구매일/구매처 변경, 구매내역 저장</li>
+            <li>디스미서블 제스처: 항목을 좌우로 밀어 <strong>삭제</strong> 또는 <strong>관리대상에 등록</strong> 작업을 빠르게 실행</li>
+          </ul>
+
+          <h3>6.2 빠른 입력 및 연동</h3>
+          <ul>
+            <li>쇼핑 항목 <strong>등록</strong> 시 항목명에 타이핑하면 구매내역을 조회해 추천 리스트를 표시하고, 선택 시 이름/수량/가격/구매처를 빠르게 채울 수 있습니다.</li>
+            <li>쇼핑리스트 <strong>등록/편집</strong> 화면의 가격 입력란 <strong>*</strong> 버튼은 수량과 가격을 곱해 계산한 값을 가격칸에 반영합니다.</li>
+            <li>빠른 입력: 한줄로 이어 입력하면 이름/수량/가격을 추출해서 추가합니다.</li>
+          </ul>
+
+          <h3>6.3 칩 모드</h3>
+          <ul>
+            <li>쇼핑리스트는 <strong>리스트 모드</strong>와 <strong>칩 모드</strong>를 오갈 수 있으며, 하단 그룹 칩 영역을 위/아래로 드래그해 전환할 수 있습니다.</li>
+            <li>칩 모드에서는 항목이 카드형 칩으로 표시되고 화면이 <strong>구매대상</strong> / <strong>구매완료</strong> 두 영역으로 나뉩니다.</li>
+            <li>칩을 다른 영역으로 드래그하면 구매 상태가 바로 변경되어, 체크박스 대신 끌어다 놓는 방식으로 정리할 수 있습니다.</li>
+            <li>칩을 아래쪽의 다른 <strong>그룹 칩</strong>으로 드래그하면 해당 그룹으로 옮길 수 있으며, 기본 동작은 <strong>이동</strong>입니다.</li>
+            <li>드래그한 상태에서 다른 손가락으로 화면을 함께 터치한 채 그룹에 놓으면 <strong>복사</strong>로 처리되어, 원래 그룹 항목은 유지하고 대상 그룹에 동일 항목을 추가할 수 있습니다.</li>
+            <li>가운데 구분선은 위아래로 드래그해 두 영역의 높이 비율을 조절할 수 있습니다.</li>
+            <li>칩을 오른쪽 아래 삭제 버튼으로 드래그하면 해당 쇼핑 항목을 빠르게 삭제할 수 있습니다.</li>
+          </ul>
+
+          <div class="tip">
+            메인 화면에서 여러 품목을 선택한 후 쇼핑 리스트로 바로 전송하면 재고 보충 루틴을 빠르게 만들 수 있습니다.
+          </div>
+        </section>
+
+        <section id="history">
+          <h2>7. 구매 내역</h2>
+          <ul>
+            <li>검색(품목명/구매처), 날짜 그룹 헤더 표시, 무한 스크롤 로딩</li>
+            <li>수동 추가/수정 가능</li>
+            <li>전체 선택/해제, 선택 삭제, 특정 날짜 이전 일괄 삭제 지원</li>
+          </ul>
+          <p>쇼핑 리스트나 스마트 등록에서 항목을 구매 내역으로 저장하면 히스토리 누적이 자동화됩니다.</p>
+        </section>
+
+        <section id="smart">
+          <h2>8. 스마트 등록(Beta)</h2>
+          <h3>8.1 동작 흐름</h3>
+          <ol>
+            <li>그룹 선택 또는 생성</li>
+            <li>카메라/갤러리로 영수증 이미지 선택 후 크롭</li>
+            <li>영수증 이미지에서 문자를 추출 하고, AI 분석 요청</li>
+            <li>인식 항목 검토/수정 후 메인 품목으로 변환 등록</li>
+          </ol>
+
+          <h3>8.2 화면 보조 기능</h3>
+          <ul>
+            <li>이미지-리스트 분할 높이 드래그 조절</li>
+            <li>인식 박스 하이라이트, 항목 포커스 확대</li>
+            <li>일괄 구매일 변경, 그룹 초기화, 구매 내역 저장</li>
+          </ul>
+
+          <h3>8.3 동시 처리와 백그라운드 대기</h3>
+          <ul>
+            <li>스마트 등록 분석은 <strong>작업그룹별로 독립적</strong>으로 돌아가므로, 서로 다른 그룹의 영수증 분석을 동시에 진행할 수 있습니다.</li>
+            <li>한 그룹의 AI 응답이 올 때까지 스마트 등록 화면에서 계속 기다릴 필요는 없으며, 다른 화면으로 이동해 일반 목록/쇼핑리스트/구매내역 등 다른 작업을 이어서 할 수 있습니다.</li>
+            <li>분석이 진행 중이면 네비게이션 메뉴의 <strong>스마트 등록(Beta)</strong> 항목 앞에 스피너가 표시되어, 현재 백그라운드에서 처리 중인 작업이 있음을 알려줍니다.</li>
+            <li>분석이 끝나면 해당 그룹으로 다시 들어왔을 때 결과/오류 안내를 확인할 수 있습니다.</li>
+          </ul>
+
+          <div class="tip">
+            인식 후 리스트에서 항목명 아래 <strong>붉은 물결선</strong>이 보이면, 분류/구매일/소비기한 같은 <strong>필수 입력 항목</strong>이 아직 비어 있다는 뜻입니다.<br>
+            필요한 값을 모두 입력하면 붉은 줄이 사라지고, <strong>관리대상에 등록</strong>할 수 있는 상태가 됩니다.
+          </div>
+
+          <div class="note">
+            영수증 이미지는 외부 AI 서비스로 직접 전송되지 않으며, 먼저 기기 내부에서 텍스트를 추출한 뒤 필요한 텍스트 정보만 분석에 사용합니다.<br>
+            앱을 완전히 닫거나, 폰이 앱을 강제로 새로고침/중지하는 경우에는 진행 중이던 백그라운드 분석이 중단될 수 있습니다.<br>
+            스마트 등록 메뉴는 AI API 키가 있을 때만 메인 네비게이션에 표시됩니다.
+          </div>
+        </section>
+
+        <section id="settings">
+          <h2>9. 설정 가이드</h2>
+          <p>설정 화면은 카테고리별 분리 + 검색 기능을 제공하며, 현재 주요 항목은 아래와 같습니다.</p>
+          <table>
+            <tr>
+              <th>화면 및 테마 설정</th>
+              <td>테마 선택, 커스텀 테마 편집, 앱 글꼴, 언어, 줄 간격, 앱 글자 크기, 구매일/소비기한 라벨명 변경, 달력 폰트 범위, 품목 이미지 표시, 네비게이션 헤더 이미지 사용/선택/삭제, 네비게이션 아이콘 표시, 쇼핑리스트 그룹 칩 한 줄 표시</td>
+            </tr>
+            <tr>
+              <th>알림 관리</th>
+              <td>알림 서비스 ON/OFF, 시스템 알림 권한 상태 확인 및 설정 화면 이동, 알림 시간, 기본 알림일(신규 항목 기본값), 만료 항목 포함 여부</td>
+            </tr>
+            <tr>
+              <th>날짜 및 동작 설정</th>
+              <td>날짜 형식, 날짜 구분자, 달력 시작 요일, 자동 저장 대상(메인 품목/쇼핑리스트/구매내역), 연속 편집 모드</td>
+            </tr>
+            <tr>
+              <th>분류 및 이미지 관리</th>
+              <td>카테고리 관리, 태그 관리, 쇼핑리스트 그룹 관리, 이미지 보관함, 이미지 해상도, 이미지 품질</td>
+            </tr>
+            <tr>
+              <th>스마트 기능 및 위젯</th>
+              <td>AI API 키 관리(OpenAI/Gemini/Claude), 기본 모델/엔드포인트 등 AI 설정, 연결 테스트, 홈 위젯 터치 동작 설정</td>
+            </tr>
+            <tr>
+              <th>데이터 관리</th>
+              <td>Google Drive 백업/복원, 엑셀 내보내기, 엑셀 가져오기</td>
+            </tr>
+            <tr>
+              <th>앱 정보 및 시스템</th>
+              <td>앱 정보, 개인정보처리방침, 오픈소스 라이선스, 저장소 사용량 확인</td>
+            </tr>
+          </table>
+        </section>
+
+        <section id="backup">
+          <h2>10. Google Drive 백업/복원</h2>
+          <h3>10.1 백업</h3>
+          <ul>
+            <li>Google 계정 연결 후 백업 파일명 지정</li>
+            <li>설정 포함 여부 선택 가능</li>
+            <li>설정 포함 시 복원 정책(병합/교체) 선택</li>
+          </ul>
+
+          <h3>10.2 복원</h3>
+          <ul>
+            <li>Drive 백업 목록에서 파일 선택 후 복원</li>
+            <li>복원 시 내부적으로 안전 백업 생성 후 적용</li>
+            <li>복원 완료 후 앱을 재시작하지 않고 바로 사용할 수 있도록 상태를 갱신하지만, 안정성을 위해 앱 재실행을 권장</li>
+          </ul>
+        </section>
+
+        <section id="excel">
+          <h2>11. 엑셀 가져오기/내보내기</h2>
+          <h3>11.1 내보내기</h3>
+          <ul>
+            <li><strong>설정 &gt; 데이터 관리 &gt; 엑셀 내보내기</strong> 실행 시 앱 데이터가 <code>.xlsx</code>로 생성되어 공유됩니다.</li>
+            <li>기본 열: 카테고리, 품목명, 수량, 가격, 구매일, 만료일, 메모, 등록일</li>
+          </ul>
+          <div class="note">
+            <strong>중요:</strong> 엑셀 내보내기 파일은 <strong>백업 파일이 아닙니다.</strong><br>
+            이 파일만으로 앱 데이터를 원래 상태로 <strong>복원할 수 없습니다.</strong><br>
+            전체 복원이 필요하면 <strong>Google Drive 백업/복원</strong> 기능을 사용하세요.
+          </div>
+
+          <h3>11.2 가져오기</h3>
+          <ul>
+            <li><code>.xlsx</code>만 지원, 첫 번째 시트만 읽음</li>
+            <li>필수 열: 품목명(Item Name), 구매일(Purchase Date), 만료일(Expiry Date)</li>
+            <li>선택 열: 카테고리, 수량, 가격, 메모</li>
+            <li>임시 테이블 미리보기 후 실제 저장 단계에서 반영</li>
+          </ul>
+
+          <div class="tip">
+            가장 안전한 방식은 앱의 내보내기 파일 형식을 그대로 유지해 다시 가져오는 것입니다.
+          </div>
+        </section>
+
+        <section id="security">
+          <h2>12. 데이터/보안</h2>
+          <ul>
+            <li>기본 데이터는 로컬 DB(SQLite) + 앱 문서 폴더 파일로 관리</li>
+            <li>앱 문서 폴더에는 DB, 이미지, 테마 파일이 포함됩니다.</li>
+            <li>AI API 키는 기기의 <strong>보안 저장 영역</strong>에 암호화되어 저장됩니다.</li>
+          </ul>
+          <div class="note">
+            API 키는 보안 특성상 일반 백업/복원 흐름에 포함되지 않으므로, 기기 교체 시 재입력이 필요할 수 있습니다.
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>13. 문제 해결</h2>
+          <h3>Q1. 알림이 오지 않습니다.</h3>
+          <ul>
+            <li>앱 설정의 알림 서비스가 켜져 있는지 확인</li>
+            <li>시스템 알림 권한이 허용되어 있는지 확인</li>
+            <li>알림 시간, 기본 알림일(디폴트값), 항목별 개별 알림일을 함께 확인</li>
+          </ul>
+
+          <h3>Q2. 스마트 등록 메뉴가 보이지 않습니다.</h3>
+          <ul>
+            <li>AI API 키가 최소 1개 등록되어 있는지 확인</li>
+            <li>확장 기능의 AI API 키 화면에서 연결 테스트 성공 여부 확인</li>
+          </ul>
+
+          <h3>Q3. 복원 후 데이터가 기대와 다릅니다.</h3>
+          <ul>
+            <li>복원 시 설정 포함 여부/병합·교체 정책이 의도와 맞았는지 확인</li>
+            <li>필요 시 최근 백업으로 다시 복원하거나 안전 백업 상태를 점검</li>
+          </ul>
+
+          <h3>Q4. 엑셀 가져오기가 중간에 실패합니다.</h3>
+          <ul>
+            <li>첫 시트 사용 여부, 필수 열 존재 여부 확인</li>
+            <li>날짜 형식(YYYYMMDD, YYMMDD, YYYY-MM-DD 등) 유효성 확인</li>
+            <li>한 행에 오류가 있으면 해당 행에서 중단될 수 있으므로 데이터 정제 후 재시도</li>
+          </ul>
+
+          <h3>Q5. 날짜 형식과 금액 형식을 바꿀 수 있나요?</h3>
+          <ul>
+            <li>기본적으로 날짜와 금액은 시스템 언어와 앱에서 설정한 언어의 로케일 기준에 따라 처리됩니다.</li>
+            <li>날짜 형식은 <strong>설정</strong>에서 직접 바꿀 수 있으며, 날짜를 해석할 때도 앱에 저장된 날짜 형식 설정이 우선 적용됩니다.</li>
+          </ul>
+
+          <h3>Q6. 기능이 제대로 실행되지 않거나 오류가 발생합니다.</h3>
+          <ul>
+            <li>여러 기기와 환경에서 테스트를 충분히 하지 못해 일부 기기에서는 예상하지 못한 문제가 생길 수 있습니다.</li>
+            <li>문제가 반복되면 사용한 기능, 기기 정보, 오류 상황을 정리해 개발자 연락처로 알려주시면 앱 기능 개선에 많은 도움이 됩니다.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <div class="footer">
+      UI 문구/정책은 버전 업데이트에 따라 달라질 수 있습니다.
+    </div>
+  </div>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var themeToggle = document.getElementById("theme-toggle");
+      var lightLabel = document.getElementById("theme-light-label");
+      var darkLabel = document.getElementById("theme-dark-label");
+      if (!themeToggle) {
+        return;
+      }
+
+      function applyTheme(theme) {
+        var normalizedTheme = theme === "dark" ? "dark" : "light";
+        root.setAttribute("data-theme", normalizedTheme);
+        themeToggle.checked = normalizedTheme === "dark";
+        if (lightLabel) {
+          lightLabel.classList.toggle("active", normalizedTheme === "light");
+        }
+        if (darkLabel) {
+          darkLabel.classList.toggle("active", normalizedTheme === "dark");
+        }
+      }
+
+      var currentTheme = root.getAttribute("data-theme");
+      if (currentTheme !== "dark" && currentTheme !== "light") {
+        currentTheme = "light";
+      }
+      applyTheme(currentTheme);
+
+      themeToggle.addEventListener("change", function () {
+        var theme = this.checked ? "dark" : "light";
+        applyTheme(theme);
+        try {
+          localStorage.setItem("manualTheme", theme);
+        } catch (error) {}
+      });
+    })();
+  </script>
+</body>
+</html>
