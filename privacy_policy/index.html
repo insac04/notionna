@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보 처리방침 - 알림온나</title>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            border-bottom: 3px solid #10b981;
+            padding-bottom: 15px;
+            color: #065f46;
+            font-size: 1.8rem;
+        }
+
+        h2 {
+            margin-top: 35px;
+            color: #065f46;
+            font-size: 1.3rem;
+            border-left: 5px solid #10b981;
+            padding-left: 15px;
+        }
+
+        p,
+        li {
+            font-size: 1rem;
+            color: #4b5563;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: #ecfdf5;
+            border: 1px solid #10b981;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 12px;
+            font-weight: 500;
+            color: #065f46;
+            line-height: 1.6;
+        }
+
+        .important-box {
+            background-color: #fff7ed;
+            border: 1px solid #f97316;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .important-box strong {
+            color: #ea580c;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #9ca3af;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+        }
+
+        strong {
+            color: #111827;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>개인정보 처리방침</h1>
+        <p><strong>알림온나</strong>(이하 '앱')는 이용자의 개인정보를 중요시하며, 관련 법령을 준수하기 위해 최선을 다하고 있습니다. 본 방침은 앱 내 데이터 처리 방식, 구글 드라이브
+            연동, 그리고 AI 서비스 이용에 관한 정보를 투명하게 제공합니다.</p>
+
+        <div class="highlight">
+            "알림온나는 별도의 외부 운영 서버 없이 사용자의 기기 내 로컬 데이터를 기반으로 작동하며, 개발자가 사용자의 데이터를 수집하거나 열람할 수 없는 구조를 원칙으로 합니다."
+        </div>
+
+        <h2>1. 개인정보의 수집 및 이용 목적</h2>
+        <p>본 앱은 다음과 같은 목적으로만 최소한의 데이터 기능을 수행하며, 사용자의 동의 없이 개인정보를 수집하지 않습니다.</p>
+        <ul>
+            <li><strong>로컬 데이터 관리:</strong> 사용자가 입력한 소비기한 정보의 기기 내 저장 및 알림.</li>
+            <li><strong>사용자 주도 백업/복원:</strong> 사용자가 선택한 구글 드라이브(Google Drive) 계정으로의 데이터 전송 및 불러오기.</li>
+            <li><strong>스마트 등록(AI):</strong> AI 기술을 활용한 영수증 내 구매 내역(품목, 가격 등) 자동 추출 및 등록 지원.</li>
+        </ul>
+
+        <h2>2. 처리하는 데이터 및 보안 항목</h2>
+        <ul>
+            <li><strong>앱 데이터:</strong> 항목명, 만료일 등. 오직 사용자의 기기 내부 또는 사용자의 구글 드라이브에만 존재합니다.</li>
+            <li><strong>AI API 키:</strong> 사용자가 직접 등록한 서비스 키는 <strong>외부로 전송되지 않으며</strong>, 기기 내 <strong>보안 저장소(Secure
+                    Storage)</strong>에만 암호화되어 보관됩니다.</li>
+            <li><strong>인증 정보:</strong> 구글 드라이브 연동을 위한 토큰 정보는 구글 보안 가이드라인에 따라 처리되며 개발자에게 공유되지 않습니다.</li>
+        </ul>
+
+        <h2>3. 스마트 등록(AI) 기능 이용 시 데이터 처리</h2>
+        <p>영수증 이미지를 활용한 '스마트 등록' 기능 이용 시, 정보 추출을 위해 외부 AI 서비스(Google Gemini API 등)와의 통신이 발생합니다.</p>
+        <div class="important-box">
+            <strong>⚠️ 데이터 전송 및 처리 안내:</strong>
+            영수증 <strong>이미지는 외부로 전송되지 않으며</strong>, 기기 내부에서 추출된 <strong>텍스트 데이터만 표준 보안 프로토콜(HTTPS)로 암호화</strong>되어
+            분석을 위해 외부 AI 엔진으로 전송됩니다. 전송된 텍스트 정보의 보관, 활용 및 파기 등 <strong>데이터
+                처리에 관한 구체적인 사항은 해당 AI 서비스 제공자의 약관 및 정책</strong>을 따릅니다.
+        </div>
+        <ul>
+            <li>개인정보 보호를 위해 카드번호, 주소 등 민감한 정보는 <strong>이미지 자르기(Crop) 기능을 통해 제외하고 구매 내역 위주로 텍스트를 추출</strong>하시기를 권장합니다.
+            </li>
+            <li>정보 노출이 우려될 경우 언제든지 분석 작업을 취소하고 직접 입력 기능을 사용할 수 있습니다.</li>
+        </ul>
+
+        <h2>4. 데이터의 제3자 제공 및 위탁</h2>
+        <p>본 앱은 이용자의 데이터를 외부 서버로 무단 전송하거나 제3자에게 제공하지 않습니다. 구글 드라이브 및 AI 분석 기능은 사용자가 서비스 제공을 위해 특정 외부 도구를 활용하는 행위이며, 개발자는
+            해당 과정에서 발생하는 데이터에 접근할 수 있는 기술적 수단을 보유하고 있지 않습니다.</p>
+
+        <h2>5. 데이터의 파기</h2>
+        <ul>
+            <li><strong>기기 내 데이터:</strong> 앱 삭제 시 기기에 저장된 모든 데이터(설정된 API 키 포함)는 즉시 삭제됩니다.</li>
+            <li><strong>백업 및 AI 데이터:</strong> 구글 드라이브 데이터는 사용자가 직접 관리하며, AI 분석을 위해 전송된 데이터는 해당 서비스 제공자의 정책에 따라 파기됩니다.
+            </li>
+        </ul>
+
+        <h2>6. 서비스 이용 기록 및 오류 데이터 처리 안내</h2>
+        <p>본 앱은 서비스의 안정성 개선과 기술적 오류 수정을 위해 Google의 Firebase Crashlytics를 활용합니다. 해당 기능은 사용자의 선택권을 보장하기 위해 다음과 같은 방식으로 운영됩니다.</p>
+
+        <div style="margin-left: 20px;">
+            <p><strong>1. 오류 리포트 수집 및 처리 (Firebase Crashlytics)</strong></p>
+            <ul>
+                <li><strong>자동 수집 비활성화:</strong> 앱 실행 및 일반적인 이용 과정에서 오류 보고를 위한 백그라운드 네트워크 연결은 기본적으로 차단되어 있습니다.</li>
+                <li><strong>기기 내 로컬 기록:</strong> 앱 이용 중 예기치 못한 종료(Crash)가 발생할 경우, 오류의 원인이 되는 스택 트레이스(Stack Trace) 및 기기 정보는 앱 전용 내부 비공개 저장소(Internal Storage)에 파일 형태로 기록됩니다. 이 과정은 오프라인으로 진행되며 외부로 데이터를 전송하지 않습니다.</li>
+                <li><strong>사용자 명시적 전송:</strong> 다음 앱 실행 시, 기기에 기록된 오류 리포트가 확인되면 사용자에게 전송 여부를 묻는 팝업을 표시합니다. 사용자가 '전송'을 선택한 시점에만 해당 데이터를 Firebase 서버로 전송합니다.</li>
+                <li><strong>거절 시 데이터 파기:</strong> 사용자가 전송을 거절할 경우, 기기 내부에 임시 저장되었던 오류 리포트 파일은 즉시 삭제되며 서버로 전송되지 않습니다.</li>
+            </ul>
+
+            <p><strong>2. 수집되는 정보의 범위</strong></p>
+            <p>전송 승인 시 수집되는 데이터는 기술적 분석을 위한 항목으로 제한되며, 사용자의 개인 식별 정보는 포함되지 않습니다.</p>
+            <ul>
+                <li><strong>기기 및 OS 정보:</strong> 모델명, 운영체제 버전, 아키텍처, 배터리 및 RAM 상태 등</li>
+                <li><strong>앱 상태 정보:</strong> 앱 버전, 오류 발생 시점의 함수 호출 기록(Stack Trace) 등</li>
+            </ul>
+        </div>
+
+        <h2>7. 문의처</h2>
+        <p>개인정보 처리와 관련하여 문의사항이 있으시면 아래의 메일로 연락해주시기 바랍니다.</p>
+        <p>이메일: <strong>insac04@gmail.com</strong></p>
+
+        <footer>
+            <p>시행 일자: 2026년 02월 06일</p>
+        </footer>
+    </div>
+</body>
+
+</html>
