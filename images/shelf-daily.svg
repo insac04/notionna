@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 290" fill="none">
+  <ellipse cx="264" cy="262" rx="211" ry="13" fill="#173C40" fill-opacity=".09"/>
+  <path d="M18 266h484m-474 8h464" stroke="#456C60" stroke-width="1.5"/>
+  <g stroke="#23464A" stroke-width="2" stroke-linejoin="round">
+    <path d="M89 132c0-21 16-32 25-40h58c9 8 25 19 25 40v108c0 11-6 17-17 17h-74c-11 0-17-6-17-17Z" fill="#D79C66"/>
+    <path d="M121 68h41v29h-41Z" fill="#E5DEBB"/>
+    <path d="M135 65V45h64v11h-49v9Z" fill="#EDECE0"/>
+    <path d="M133 66h19v8h-19Z" fill="#EDECE0"/>
+    <path d="M89 144h108v70H89Z" fill="#F7F2E0"/>
+    <circle cx="143" cy="178" r="22" fill="#E1E8AE"/>
+    <path d="M142 164c0 0-11 12-11 17a11 11 0 0 0 22 0c0-5-11-17-11-17Z" fill="#67866B" stroke="none"/>
+    <path d="M106 130v-5c0-9 7-18 12-21M103 228v11c0 4 2 6 6 6" stroke="#EDCFA4" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(8 276 155)" stroke="#23464A" stroke-width="2" stroke-linejoin="round">
+    <path d="m225 52 17 183h78l17-183Z" fill="#E5C976"/>
+    <path d="M243 235h76v23h-76Z" fill="#EDECE0"/>
+    <path d="M225 52h112v9H225Z" fill="#D2AD54"/>
+    <path d="m238 80 9 125h68l9-125Z" fill="#F8F4E5"/>
+    <circle cx="282" cy="122" r="18" fill="#E69765" stroke="none"/>
+    <path d="M282 94v-7m0 70v-7m28-28h7m-70 0h7m8-20-5-5m45 45 5 5m-45-5-5 5m45-45 5-5" stroke="#A16B3F" stroke-width="1.5"/>
+    <path d="M262 174h39m-34 9h29" stroke-width="1.5"/>
+    <path d="M250 246h62" stroke="#A1ADA3" stroke-width="1"/>
+  </g>
+  <g stroke="#365951" stroke-width="1.7" stroke-linejoin="round">
+    <path d="M348 201h92v54h-92Z" fill="#AFC7B3"/>
+    <path d="M348 201h79l13 13h-79Z" fill="#E6E7CF"/>
+    <path d="M361 214h79v41h-79Z" fill="#95B29D"/>
+    <path d="M371 219v31m9-31v31m9-31v31m9-31v31m9-31v31m9-31v31m9-31v31m9-31v31M366 227h69m-69 9h69m-69 9h69" stroke="#CAD8BE" stroke-width="1"/>
+    <path d="M386 201h15l13 13v41h-15v-41Z" fill="#F7F2E0"/>
+  </g>
+  <path d="M57 137v47m-5-40 5-7 5 7m-10 33 5 7 5-7" stroke="#638277" stroke-width="1"/>
+  <circle cx="422" cy="155" r="5" fill="#E1E8AE" stroke="#658476"/>
+  <circle cx="435" cy="170" r="3" stroke="#658476"/>
+</svg>
